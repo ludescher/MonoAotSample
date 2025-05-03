@@ -40,6 +40,9 @@ g++ main.cpp -o MyApp \
 
 
 # /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mcs -target:exe -out:Class1.exe Class1.cs
-# /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=llvm,full,llvmonly Class1.exe
 # /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=llvm,hybrid,llvmonly Class1.exe
-# /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=llvm,full,hybrid Class1.exe Class1.exe
+# /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=llvm,full,hybrid Class1.exe
+
+
+# /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mcs -target:exe -out:Class1.exe Class1.cs
+# /home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=llvm,full,llvmonly Class1.exe

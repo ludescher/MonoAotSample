@@ -1,8 +1,0 @@
-Mono Ahead of Time compiler - compiling assembly /home/johannes/Playground/LatestGPT/Class1.dll
-AOTID 909FD8F2-6DCA-78A4-ADF6-40B75B78A651
-Executing opt: "opt" -f  -o "mono_aot_FrQkvV/temp.opt.bc" "mono_aot_FrQkvV/temp.bc"
-Executing clang: clang++ -fexceptions -fpic -O2 -fno-optimize-sibling-calls -Wno-override-module -c -o "mono_aot_FrQkvV/temp-llvm.o" "mono_aot_FrQkvV/temp.opt.bc"
-Compiled: 9/9
-Executing the native assembler: "as" --64  -o /tmp/mono_aot_3GWb0k.o /tmp/mono_aot_3GWb0k
-Executing the native linker: clang++ -shared -o /home/johannes/Playground/LatestGPT/Class1.dll.so.tmp "mono_aot_FrQkvV/temp-llvm.o" /tmp/mono_aot_3GWb0k.o  -lstdc++
-JIT time: 1 ms, Generation time: 78 ms, Assembly+Link time: 107 ms.

@@ -1,6 +1,0 @@
-clang++: error: no such file or directory: 'mono_aot_Tf2HrL/temp-llvm.o'
-AOT of image Class1.dll failed.
-Mono Ahead of Time compiler - compiling assembly /home/johannes/Playground/LatestGPT/Class1.dll
-AOTID 5EAB1845-953F-D803-4165-4EF38DBD29A9
-Executing the native assembler: "as" --64  -o /tmp/mono_aot_5Zjkec.o /tmp/mono_aot_5Zjkec
-Executing the native linker: clang++ -shared -o /home/johannes/Playground/LatestGPT/Class1.dll.so.tmp "mono_aot_Tf2HrL/temp-llvm.o" /tmp/mono_aot_5Zjkec.o  -lstdc++

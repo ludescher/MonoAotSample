@@ -2,14 +2,17 @@
 #include <dlfcn.h>
 #include <mono/jit/jit.h>
 #include <mono/metadata/assembly.h>
+// #include <mono/jit/driver.h> // für mono_main
+
+extern "C" int mono_main(int argc, char *argv[]);
 
 int main(int argc, char *argv[])
 {
     // Mono-Installationspfad (anpassen an lokale Mono-Installation)
     mono_set_dirs("/home/johannes/Playground/cppwithcsharp/momo-heaven/lib", "/home/johannes/Playground/cppwithcsharp/momo-heaven/etc"); //: contentReference[oaicite:13]{index=13}
 
-    // mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
-    mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
+    mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
+    // mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
 
     // Mono-Laufzeit starten
     MonoDomain *domain = mono_jit_init("MainDomain");
@@ -46,7 +49,12 @@ int main(int argc, char *argv[])
     }
 
     // Main-Methode der Assembly ausführen
-    int exitcode = mono_jit_exec(domain, assembly, 0, nullptr); //: contentReference[oaicite:15]{index=15}
+    // int exitcode = mono_jit_exec(domain, assembly, 0, nullptr); //: contentReference[oaicite:15]{index=15}
+
+    int mono_argc = 2;
+    char *mono_argv[] = {(char *)"MyApp", (char *)"Class1.exe"};
+    int exitcode = mono_main(mono_argc, mono_argv);
+
     mono_jit_cleanup(domain);
     return exitcode;
 }
