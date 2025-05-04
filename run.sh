@@ -12,4 +12,4 @@ g++ main.cpp -o MyApp \
   -L/home/johannes/Playground/cppwithcsharp/momo-heaven/lib \
   -lmonosgen-2.0 -ldl -lstdc++
 
-MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot ./MyApp Class1.exe &> app.log 
+MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot ./MyApp Class1.exe
