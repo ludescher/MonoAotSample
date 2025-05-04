@@ -11,9 +11,9 @@ int main(int argc, char *argv[])
     // Mono-Installationspfad (anpassen an lokale Mono-Installation)
     mono_set_dirs("/home/johannes/Playground/cppwithcsharp/momo-heaven/lib", "/home/johannes/Playground/cppwithcsharp/momo-heaven/etc"); //: contentReference[oaicite:13]{index=13}
 
-    // mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
+    mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
     // mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
-    mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
+    // mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
 
     // Mono-Laufzeit starten
     MonoDomain *domain = mono_jit_init("MainDomain");
@@ -43,6 +43,27 @@ int main(int argc, char *argv[])
     // mono_aot_register_module(reinterpret_cast<void **>(aot_info));
 
     // Assembly laden
+    // MonoAssembly *assembly1 = mono_domain_assembly_open(domain, "/home/johannes/Playground/cppwithcsharp/momo-heaven/lib/mono/4.5/mscorlib.dll");
+    // if (!assembly1)
+    // {
+    //     std::cerr << "Assembly mscorlib.dll nicht gefunden\n";
+    //     return 1;
+    // }
+
+    // MonoAssembly *assembly2 = mono_domain_assembly_open(domain, "/home/johannes/Playground/cppwithcsharp/momo-heaven/lib/mono/4.5/System.dll");
+    // if (!assembly2)
+    // {
+    //     std::cerr << "Assembly System.dll nicht gefunden\n";
+    //     return 1;
+    // }
+
+    // MonoAssembly *assembly3 = mono_domain_assembly_open(domain, "/home/johannes/Playground/cppwithcsharp/momo-heaven/lib/mono/4.5/System.Core.dll");
+    // if (!assembly3)
+    // {
+    //     std::cerr << "Assembly System.Core.dll nicht gefunden\n";
+    //     return 1;
+    // }
+
     MonoAssembly *assembly = mono_domain_assembly_open(domain, "Class1.exe");
     if (!assembly)
     {
