@@ -22,23 +22,24 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // // AOT-Bibliothek (.so) dynamisch laden
-    // void *lib = dlopen("Class1.dll.so", RTLD_NOW | RTLD_LOCAL);
-    // if (!lib)
-    // {
-    //     std::cerr << "dlopen failed: " << dlerror() << "\n";
-    //     return 1;
-    // }
+    // after mono_jit_init and before mono_domain_assembly_open:
+    void *lib = dlopen("Class1.exe.so", RTLD_NOW | RTLD_LOCAL);
 
-    // // AOT-Info-Symbol finden und registrieren
-    // void *aot_info = dlsym(lib, "mono_aot_module_Class1_info");
-    // if (!aot_info)
-    // {
-    //     std::cerr << "AOT symbol not found\n";
-    //     return 1;
-    // }
-    // // mono_aot_register_module((void **)aot_info); //: contentReference[oaicite:14]{index=14}
-    // mono_aot_register_module(reinterpret_cast<void **>(aot_info));
+    if (!lib)
+    {
+        std::cerr << "dlopen failed: " << dlerror() << "\n";
+        return 1;
+    }
+
+    void *aot_info = dlsym(lib, "mono_aot_module_Class1_info");
+
+    if (!aot_info)
+    {
+        std::cerr << "AOT symbol not found\n";
+        return 1;
+    }
+
+    mono_aot_register_module(reinterpret_cast<void **>(aot_info));
 
     // Assembly laden
     MonoAssembly *assembly = mono_domain_assembly_open(domain, "Class1.exe");
@@ -49,11 +50,11 @@ int main(int argc, char *argv[])
     }
 
     // Main-Methode der Assembly ausführen
-    // int exitcode = mono_jit_exec(domain, assembly, 0, nullptr); //: contentReference[oaicite:15]{index=15}
+    int exitcode = mono_jit_exec(domain, assembly, 0, nullptr); //: contentReference[oaicite:15]{index=15}
 
-    int mono_argc = 2;
-    char *mono_argv[] = {(char *)"MyApp", (char *)"Class1.exe"};
-    int exitcode = mono_main(mono_argc, mono_argv);
+    // int mono_argc = 2;
+    // char *mono_argv[] = {(char *)"MyApp", (char *)"Class1.exe"};
+    // int exitcode = mono_main(mono_argc, mono_argv);
 
     mono_jit_cleanup(domain);
     return exitcode;
