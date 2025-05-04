@@ -11,8 +11,9 @@ int main(int argc, char *argv[])
     // Mono-Installationspfad (anpassen an lokale Mono-Installation)
     mono_set_dirs("/home/johannes/Playground/cppwithcsharp/momo-heaven/lib", "/home/johannes/Playground/cppwithcsharp/momo-heaven/etc"); //: contentReference[oaicite:13]{index=13}
 
-    mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
-    // mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
+    // mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
+    // mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
+    mono_jit_set_aot_mode(MONO_AOT_MODE_HYBRID);
 
     // Mono-Laufzeit starten
     MonoDomain *domain = mono_jit_init("MainDomain");
@@ -23,23 +24,23 @@ int main(int argc, char *argv[])
     }
 
     // after mono_jit_init and before mono_domain_assembly_open:
-    void *lib = dlopen("Class1.exe.so", RTLD_NOW | RTLD_LOCAL);
+    // void *lib = dlopen("Class1.exe.so", RTLD_NOW | RTLD_LOCAL);
 
-    if (!lib)
-    {
-        std::cerr << "dlopen failed: " << dlerror() << "\n";
-        return 1;
-    }
+    // if (!lib)
+    // {
+    //     std::cerr << "dlopen failed: " << dlerror() << "\n";
+    //     return 1;
+    // }
 
-    void *aot_info = dlsym(lib, "mono_aot_module_Class1_info");
+    // void *aot_info = dlsym(lib, "mono_aot_module_Class1_info");
 
-    if (!aot_info)
-    {
-        std::cerr << "AOT symbol not found\n";
-        return 1;
-    }
+    // if (!aot_info)
+    // {
+    //     std::cerr << "AOT symbol not found\n";
+    //     return 1;
+    // }
 
-    mono_aot_register_module(reinterpret_cast<void **>(aot_info));
+    // mono_aot_register_module(reinterpret_cast<void **>(aot_info));
 
     // Assembly laden
     MonoAssembly *assembly = mono_domain_assembly_open(domain, "Class1.exe");
