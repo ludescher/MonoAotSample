@@ -1,15 +1,16 @@
 #!/bin/sh
 
-export LD_LIBRARY_PATH=/home/johannes/Playground/cppwithcsharp/momo-heaven/lib
+CURRENT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-/home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mcs -target:exe -out:Class1.exe Class1.cs
-/home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono --aot=full Class1.exe
+export LD_LIBRARY_PATH="$CURRENT_DIR/momo/lib"
 
-/home/johannes/Playground/cppwithcsharp/momo-heaven/bin/mono Class1.exe
+$CURRENT_DIR/momo/bin/mcs -target:exe -out:Class1.exe Class1.cs
+$CURRENT_DIR/momo/bin/mono --aot=full Class1.exe
+$CURRENT_DIR/momo/bin/mono Class1.exe
 
 g++ main.cpp -o MyApp \
-  -I/home/johannes/Playground/cppwithcsharp/momo-heaven/include/mono-2.0 \
-  -L/home/johannes/Playground/cppwithcsharp/momo-heaven/lib \
+  -I$CURRENT_DIR/momo/include/mono-2.0 \
+  -L$CURRENT_DIR/momo/lib \
   -lmonosgen-2.0 -ldl -lstdc++
 
-MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot ./MyApp Class1.exe
+MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot ./MyApp

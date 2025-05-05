@@ -16,7 +16,7 @@ fi
 # Ensure you have write permissions to PREFIX
 
 if [ -d $PREFIX ]; then
-  echo "Prefix directory exists."
+  echo "INFO: The Prefix directory ($PREFIX) exists already."
 else
   sudo mkdir $PREFIX
 fi
@@ -29,21 +29,21 @@ sudo apt-get install git autoconf libtool libtool-bin automake build-essential g
 PATH=$PREFIX/bin:$PATH
 
 if [ -d $TARGET_MONO_DIR_NAME ]; then
-  echo "$TARGET_MONO_DIR_NAME directory already exists."
+  echo "ERROR: The prefix $TARGET_MONO_DIR_NAME directory exists already."
   exit 1
 else
   if [ -f $REMOTE_FILENAME ]; then
-    echo "$REMOTE_FILENAME exists already!"
+    echo "INFO: Skip wget, because $REMOTE_FILENAME already exists!"
   else
     if ! $wget $WGET_OPTS "$URL_BASE/$REMOTE_FILENAME"; then
-      echo "ERROR: can't get archive $VERSION" >&2
+      echo "ERROR: Can't get archive $VERSION" >&2
       exit 1
     fi
   fi
 fi
 
 if [ -d $TARGET_MONO_DIR_NAME ]; then
-  echo "$TARGET_MONO_DIR_NAME directory already exists."
+  echo "INFO: The unzipped $TARGET_MONO_DIR_NAME directory exists already."
 else
   if [ -f $REMOTE_FILENAME ]; then
     tar xvf $REMOTE_FILENAME

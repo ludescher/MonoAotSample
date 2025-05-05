@@ -9,7 +9,7 @@ extern "C" int mono_main(int argc, char *argv[]);
 int main(int argc, char *argv[])
 {
     // Mono-Installationspfad (anpassen an lokale Mono-Installation)
-    mono_set_dirs("/home/johannes/Playground/cppwithcsharp/momo-heaven/lib", "/home/johannes/Playground/cppwithcsharp/momo-heaven/etc"); //: contentReference[oaicite:13]{index=13}
+    mono_set_dirs("/home/johannes/DEV/MonoAotSample/momo/lib", "/home/johannes/DEV/MonoAotSample/momo/etc"); //: contentReference[oaicite:13]{index=13}
 
     mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
     // mono_jit_set_aot_mode(MONO_AOT_MODE_LLVMONLY);
