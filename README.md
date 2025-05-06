@@ -1,10 +1,6 @@
+# Mono AOT Sample
 
-mono_thread_set_main(mono_thread_current());
-
-
-# Mono AOT Project
-
-This project demonstrates how to embed a fully AOT-compiled C# assembly into a C++ application using the Mono runtime. It includes the complete workflow: from installing Mono, compiling C# code with AOT, and building the final native application.
+This Sample demonstrates how to embed a fully AOT-compiled C# assembly into a C++ application using the Mono runtime. It includes the complete workflow: from installing Mono, compiling C# code with AOT, and building the final native application.
 
 ---
 
@@ -31,7 +27,7 @@ Once Mono is installed, refer to the [official compilation guide](https://www.mo
 
 ### 3. Configure the Build
 
-Run the configuration script provided in the project to prepare Mono and related components:
+Run the configuration script provided in the Sample to prepare Mono and related components:
 
 ```bash
 ./configure.sh
@@ -39,9 +35,9 @@ Run the configuration script provided in the project to prepare Mono and related
 
 🛠️ This script downloads and sets up the required build environment.
 
-### 4. Build and Run the Project
+### 4. Build and Run the Sample
 
-Once configuration is complete, build and run the project with:
+Once configuration is complete, build and run the Sample with:
 
 ```bash
 ./run.cmake.sh
@@ -56,7 +52,7 @@ This will:
 
 ---
 
-## Project Structure
+## Sample Structure
 
 ```text
 .
@@ -71,7 +67,7 @@ This will:
 
 ## Notes
 
-* This project assumes you are using Mono with full AOT compilation. LLVM integration can be added later once the basic flow is stable.
+* This Sample assumes you are using Mono with full AOT compilation. LLVM integration can be added later once the basic flow is stable.
 * Make sure `mono`, `mcs`, and `mono-sgen` are all accessible in your `PATH`.
 
 ---
