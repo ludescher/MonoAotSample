@@ -1,20 +1,18 @@
 #!/bin/sh
 
 CURRENT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-PREFIX=$@
-if [ -z $PREFIX ]; then
-  PREFIX="$CURRENT_DIR/build"
+BUILD_DIR=$@
+if [ -z $BUILD_DIR ]; then
+  BUILD_DIR="$CURRENT_DIR/build"
 fi
 
-# Ensure you have write permissions to PREFIX
-
-if [ -d $PREFIX ]; then
-  echo "INFO: The Prefix directory ($PREFIX) exists already."
+if [ -d $BUILD_DIR ]; then
+  echo "INFO: The directory ($BUILD_DIR) exists already."
 else
-  sudo mkdir $PREFIX
+  sudo mkdir $BUILD_DIR
 fi
 
-sudo chown -R `whoami` $PREFIX
+sudo chown -R `whoami` $BUILD_DIR
 
 cd build
 

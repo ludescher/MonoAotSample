@@ -60,3 +60,9 @@ cd $TARGET_MONO_DIR_NAME
 make clean   # good to clean the previous builds completely
 make
 make install
+
+cd $CURRENT_DIR/momo/lib/mono/4.5
+
+for dll in *.dll; do
+  $CURRENT_DIR/momo/bin/mono --aot=full $dll
+done

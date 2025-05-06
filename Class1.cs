@@ -1,19 +1,22 @@
 using System;
 
-namespace VitaGL
+namespace MonoAotSample
 {
     class Class1
     {
-        public static int Main(string[] args)
+        public static int Foo(string[] args)
         {
-            Console.WriteLine("Hello from AOT C# code!");
+            foreach (string arg in args)
+            {
+                Console.WriteLine("Foo: Hello from AOT C# code with arg: \"{0}\"!", arg);
+            }
 
-            return 42;
+            return 4201;
         }
 
-        public static int Peter()
+        public static int Bar()
         {
-            Console.WriteLine("Hello from AOT C# code!");
+            Console.WriteLine("Bar: Hello from AOT C# code!");
 
             return 1024;
         }
