@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
 
-    MonoDomain *domain = mono_jit_init("Monogame4Vita");
+    MonoDomain *domain = mono_jit_init("Mono4Vita");
 
     if (!domain)
     {
