@@ -2,11 +2,14 @@
 
 CURRENT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-export LD_LIBRARY_PATH="$CURRENT_DIR/momo/lib"
+cd $CURRENT_DIR;
 
-$CURRENT_DIR/momo/bin/mcs -target:exe -out:Class1.exe Class1.cs
-$CURRENT_DIR/momo/bin/mono --aot=full Class1.exe
-$CURRENT_DIR/momo/bin/mono Class1.exe
+export LD_LIBRARY_PATH="$CURRENT_DIR/momo/lib"
+# export LD_LIBRARY_PATH="/usr/lib"
+
+$CURRENT_DIR/momo/bin/mcs -target:library -out:Class1.dll Class1.cs
+$CURRENT_DIR/momo/bin/mono --aot=full Class1.dll
+$CURRENT_DIR/momo/bin/mono Class1.dll
 
 g++ main.cpp -o MyApp \
   -I$CURRENT_DIR/momo/include/mono-2.0 \

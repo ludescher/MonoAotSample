@@ -1,11 +1,19 @@
 using System;
 
-class Class1
+namespace VitaGL
 {
-    public static int Main(string[] args)
+    class Class1
     {
-        Console.WriteLine("Hello from AOT C# code!");
+        public static int Main(string[] args)
+        {
+            Console.WriteLine("Hello from AOT C# code!");
 
-        return 42;
+            return 42;
+        }
+
+        public static int Peter()
+        {
+            return 1024;
+        }
     }
 }
