@@ -13,6 +13,8 @@ namespace VitaGL
 
         public static int Peter()
         {
+            Console.WriteLine("Hello from AOT C# code!");
+
             return 1024;
         }
     }
