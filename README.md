@@ -63,6 +63,14 @@ This will:
 
 ---
 
+## ⚠️ Important Note on `mono_jit_exec()`
+
+Avoid using `mono_jit_exec()` when working with AOT (Ahead-Of-Time) compiled assemblies in an embedded Mono scenario. In my experience, this function does **not** work correctly with AOT-compiled code, and attempting to make it work cost me over a week of intensive debugging and research.
+
+If you’ve successfully used `mono_jit_exec()` in an AOT embedded setup and can explain how it was achieved, I’d genuinely appreciate hearing from you — it’s possible I misunderstood its proper usage or missed a critical detail.
+
+---
+
 ## Explanation of Key Steps:
 
 This walkthrough shows step-by-step how the Mono embedding API is used to initialize the runtime, load an AOT-compiled assembly, find and invoke a managed method, and clean up when done.
