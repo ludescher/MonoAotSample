@@ -4,15 +4,6 @@ This Sample demonstrates how to embed a fully AOT-compiled C# assembly into a C+
 
 ---
 
-## Prerequisites
-
-Before you begin, make sure your system meets the following requirements:
-
-* A working installation of Mono
-* CMake and a C++ compiler (e.g., g++)
-
----
-
 ## Setup Instructions
 
 ### 1. Install Mono
