@@ -1,6 +1,7 @@
 /mono*
 /momo*
 /MyApp
+/build
 /*.*
 !/.gitignore
 !/*.sh

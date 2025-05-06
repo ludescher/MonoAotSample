@@ -7,14 +7,16 @@
 
 int main(int argc, char *argv[])
 {
-    std::filesystem::path mono_lib_path = std::filesystem::current_path() / "momo/lib";
-    std::filesystem::path mono_etc_path = std::filesystem::current_path() / "momo/etc";
+    std::filesystem::path mono_lib_path = std::filesystem::current_path() / "../momo/lib";
+    std::filesystem::path mono_etc_path = std::filesystem::current_path() / "../momo/etc";
+
+    fprintf(stderr, "Mono-Lib-Path: %s\n", mono_lib_path.c_str());
 
     mono_set_dirs(mono_lib_path.c_str(), mono_etc_path.c_str());
 
     mono_jit_set_aot_mode(MONO_AOT_MODE_FULL);
 
-    MonoDomain *domain = mono_jit_init("MainDomain");
+    MonoDomain *domain = mono_jit_init("Monogame4Vita");
 
     if (!domain)
     {
