@@ -4,6 +4,10 @@ This Sample demonstrates how to embed a fully AOT-compiled C# assembly into a C+
 
 ---
 
+> Only tested on Linux!
+
+---
+
 ## Setup Instructions
 
 ### 1. Install Mono

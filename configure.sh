@@ -29,8 +29,7 @@ sudo apt-get install git autoconf libtool libtool-bin automake build-essential g
 PATH=$PREFIX/bin:$PATH
 
 if [ -d $TARGET_MONO_DIR_NAME ]; then
-  echo "ERROR: The prefix $TARGET_MONO_DIR_NAME directory exists already."
-  exit 1
+  echo "ERROR: The mono $TARGET_MONO_DIR_NAME directory exists already."
 else
   if [ -f $REMOTE_FILENAME ]; then
     echo "INFO: Skip wget, because $REMOTE_FILENAME already exists!"
@@ -52,6 +51,9 @@ else
     exit 1
   fi
 fi
+
+export LD_LIBRARY_PATH=$CURRENT_DIR/momo/lib:$LD_LIBRARY_PATH
+# export MONO_PATH=$CURRENT_DIR/momo/lib/mono/4.5:$CURRENT_DIR/build:$MONO_PATH
 
 cd $TARGET_MONO_DIR_NAME
 

@@ -40,10 +40,10 @@ target_link_libraries(MyApp PRIVATE monosgen-2.0 dl stdc++)
 add_dependencies(MyApp build_cs)
 
 # Post-build command to run the app
-add_custom_command(TARGET MyApp POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E env
-        LD_LIBRARY_PATH=${MONO_LIB_DIR}
-        MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot
-        $<TARGET_FILE:MyApp>
-    COMMENT "Running MyApp with Mono AOT"
-)
+# add_custom_command(TARGET MyApp POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E env
+#         LD_LIBRARY_PATH=${MONO_LIB_DIR}
+#         MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot
+#         $<TARGET_FILE:MyApp>
+#     COMMENT "Running MyApp with Mono AOT"
+# )
