@@ -24,12 +24,13 @@ fi
 sudo chown -R `whoami` $PREFIX
 
 # Ensure that all required packages are installed.
-sudo apt-get install git autoconf libtool libtool-bin automake build-essential gettext cmake python python-is-python3 2to3 libkrb5-dev libatomic-ops-dev zlib1g-dev
+sudo apt-get update
+sudo apt-get install git autoconf libtool libtool-bin automake build-essential gettext cmake python python-is-python3 2to3 python3-distutils python3-all python3-distutils-extra libkrb5-dev libatomic-ops-dev zlib1g-dev pkg-config libicu-dev libssl-dev
 
 PATH=$PREFIX/bin:$PATH
 
 if [ -d $TARGET_MONO_DIR_NAME ]; then
-  echo "ERROR: The mono $TARGET_MONO_DIR_NAME directory exists already."
+  echo "INFO: The mono $TARGET_MONO_DIR_NAME directory exists already."
 else
   if [ -f $REMOTE_FILENAME ]; then
     echo "INFO: Skip wget, because $REMOTE_FILENAME already exists!"
@@ -53,7 +54,6 @@ else
 fi
 
 export LD_LIBRARY_PATH=$CURRENT_DIR/momo/lib:$LD_LIBRARY_PATH
-# export MONO_PATH=$CURRENT_DIR/momo/lib/mono/4.5:$CURRENT_DIR/build:$MONO_PATH
 
 cd $TARGET_MONO_DIR_NAME
 

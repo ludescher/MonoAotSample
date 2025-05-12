@@ -1,6 +1,7 @@
 #include <iostream>
 #include <dlfcn.h>
 #include <mono/jit/jit.h>
+#include <mono/metadata/mono-config.h>
 #include <mono/metadata/assembly.h>
 #include <filesystem>
 #include <iostream>
@@ -12,6 +13,10 @@ int main(int argc, char *argv[])
     std::filesystem::path mono_etc_path = std::filesystem::current_path() / "../momo/etc";
 
     fprintf(stderr, "Mono-Lib-Path: %s\n", mono_lib_path.c_str());
+
+    // Certain features of the runtime like Dll remapping depend on a configuration file, to load the configuration file, just add:
+    mono_config_parse(NULL);
+    // Which will load the Mono configuration file (typically /etc/mono/config).
 
     // Tell the Mono runtime where to find its “lib” and “etc” directories.
     // This is needed if Mono is not installed in a standard location.
