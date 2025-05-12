@@ -43,7 +43,7 @@ add_dependencies(MyApp build_cs)
 add_custom_command(TARGET MyApp POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E env
         LD_LIBRARY_PATH=${MONO_LIB_DIR}
-        MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot
+        # MONO_LOG_LEVEL=debug MONO_LOG_MASK=aot
         $<TARGET_FILE:MyApp>
     COMMENT "Running MyApp with Mono AOT"
 )
